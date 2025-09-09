@@ -200,7 +200,7 @@ export default function QuotationForm({ onSubmit }) {
             <label className="block text-sm font-medium text-gray-300">USC No</label>
             <input
               type="text"
-              {...register('uscNo', { required: 'USC No is required' })}
+              {...register('uscNo')}
               className="w-full px-4 py-2 rounded-lg border border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-700 text-gray-100 placeholder-gray-400"
             />
             {errors.uscNo && <p className="text-sm text-red-400">{errors.uscNo.message}</p>}
@@ -249,7 +249,7 @@ export default function QuotationForm({ onSubmit }) {
             <label className="block text-sm font-medium text-gray-300">Monthly Electricity Bill (₹)</label>
             <input
               type="number"
-              {...register('monthlyBill', { required: 'Monthly bill is required' })}
+              {...register('monthlyBill')}
               className="w-full px-4 py-2 rounded-lg border border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-700 text-gray-100 placeholder-gray-400"
             />
             {errors.monthlyBill && <p className="text-sm text-red-400">{errors.monthlyBill.message}</p>}
@@ -258,7 +258,7 @@ export default function QuotationForm({ onSubmit }) {
             <label className="block text-sm font-medium text-gray-300">Units Consumed ({lastMonth})</label>
             <input
               type="number"
-              {...register('unitsConsumed', { required: 'Units Consumed is required' })}
+              {...register('unitsConsumed')}
               className="w-full px-4 py-2 rounded-lg border border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-700 text-gray-100 placeholder-gray-400"
               placeholder={`Enter units consumed for ${lastMonth}`}
             />

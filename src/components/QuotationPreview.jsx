@@ -105,21 +105,38 @@ export default function QuotationPreview({ data, onBack }) {
     doc.setFont('helvetica', 'bold')
     doc.text(`Sub: Proposal for Supply & Installation of ${data.numberOfSetups || 1} Nos. ${data.capacity} KWp rooftop solar plant for residential purposes under PM Suryaghar Yojana`, margin, 74, { maxWidth: pageWidth - 2 * margin })
     doc.setFont('helvetica', 'normal')
-    // Customer usage summary
+    // Customer usage summary - only show if user has entered data
     let y = 86
-    doc.setFontSize(10)
-    doc.text('Understanding Customer usage:', margin, y)
-    y += 6
-    doc.text(`USC No: ${data.uscNo || ''}`, margin, y)
-    y += 6
-    doc.text(`Monthly average: ${data.unitsConsumed || ''} Units`, margin, y)
-    y += 6
-    doc.text(`Units consumed (${new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1).toLocaleString('default', { month: 'long' })}): ${data.unitsConsumed || ''}`, margin, y)
-    y += 6
-    doc.text(`Bill amount: Rs. ${data.monthlyBill || ''}`, margin, y)
-    y += 6
-    doc.text(`Recommended setup: ${data.recommendedKwp || ''} KWp (120 Units/KWp/Month production)`, margin, y)
-    y += 10
+    const hasUsageData = data.uscNo || data.monthlyBill || data.unitsConsumed || data.recommendedKwp
+    
+    if (hasUsageData) {
+      doc.setFontSize(10)
+      doc.text('Understanding Customer usage:', margin, y)
+      y += 6
+      
+      if (data.uscNo) {
+        doc.text(`USC No: ${data.uscNo}`, margin, y)
+        y += 6
+      }
+      
+      
+      if (data.unitsConsumed) {
+        doc.text(`Units consumed (${new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1).toLocaleString('default', { month: 'long' })}): ${data.unitsConsumed}`, margin, y)
+        y += 6
+      }
+      
+      if (data.monthlyBill) {
+        doc.text(`Bill amount: Rs. ${data.monthlyBill}`, margin, y)
+        y += 6
+      }
+      
+      if (data.recommendedKwp) {
+        doc.text(`Recommended setup: ${data.recommendedKwp} KWp (120 Units/KWp/Month production)`, margin, y)
+        y += 6
+      }
+      
+      y += 4
+    }
     doc.setFont('helvetica', 'bold')
     doc.text('Summary:', margin, y)
     y += 6
