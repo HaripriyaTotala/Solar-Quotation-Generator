@@ -30,10 +30,10 @@ const PDFGenerator = ({ formData }) => {
     doc.text(`State: ${formData.customerInfo.state}`, 30, 80);
     
     // Project Details
-    //doc.text('Project Details:', 20, 100);
-    //doc.text(`Monthly Bill: ₹${formData.projectDetails.monthlyBill}`, 30, 110);
-    //doc.text(`Annual Bill: ₹${formData.projectDetails.annualBill}`, 30, 120);
-    //doc.text(`Recommended Setup: ${formData.projectDetails.recommendedSetup} kWp`, 30, 130);
+    doc.text('Project Details:', 20, 100);
+    doc.text(`Monthly Bill: ₹${formData.projectDetails.monthlyBill}`, 30, 110);
+    doc.text(`Annual Bill: ₹${formData.projectDetails.annualBill}`, 30, 120);
+    doc.text(`Recommended Setup: ${formData.projectDetails.recommendedSetup} kWp`, 30, 130);
     
     // Cost Breakdown
     const totalBaseCost = Number(formData.costBreakdown.structureCost) + 

@@ -119,7 +119,6 @@ export default function QuotationPreview({ data, onBack }) {
         y += 6
       }
       
-      
       if (data.unitsConsumed) {
         doc.text(`Units consumed (${new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1).toLocaleString('default', { month: 'long' })}): ${data.unitsConsumed}`, margin, y)
         y += 6
@@ -286,7 +285,6 @@ export default function QuotationPreview({ data, onBack }) {
 
     // Logo top left
     doc.addImage(logoBase64, 'JPEG', margin, 10, 30, 18)
-
     // Why Go Solar section
     doc.setFontSize(16)
     doc.setTextColor(41, 128, 185)
